@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg align-items-center" 
+                style="background-image: url({% static 'images/background.png' %});">        
+    <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-sm-6">
+                    <div class="breadcrumb_tittle text-left">
+                        <h2>La Gallerie</h2>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="breadcrumb_content text-right">
+                        <p>Acceuil<span>/</span>La Gallerie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+    <!-- feature_post start-->
+    <section class="all_post section_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="single_post post_1 feature_post">
+                                <div class="single_post_img">
+                                    <img src="{% static 'images/post/slideGallerie.jpg' %}" alt="">
+                                </div>
+                                <div class="single_post_text text-center">
+                                    <div><h5 style="color: red;"> Fashion / Hair Design</h5></div> 
+                                    <div><h2>La gallerie des différentes coiffures réalisées</p></h2></div>
+                                </div>
+                            </div>
+                        </div>
+                        {% for photo in photos %}
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single_post post_1">
+                                <div class="single_post_img">
+                                    <img src="{{ photo.image.url }}" alt="{{ photo.titre }}">
+                                </div>
+                                <div class=" text-center">
+                                    <a href="category.html"><h6 style="color: red;"> Copyright © 2020 Bibiche Coiffure</h6></a> 
+                                    <p>Publiée le {{ photo.date_creation }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                            <p>Aucune photo</p>
+                        {% endfor %}
+                    </div>
+                    {% if paginate %}
+                    <div class="col-lg-5 offset-lg-5 col-sx-6 offset-sm-5">
+                        
+                            {% if photos.has_previous %}
+                                <a href="?page=1">&laquo;Première</a> - 
+                                <a href="?page={{ photos.previous_page_number }}">
+                                    Précédente
+                                </a>
+                            {% endif %}
+                            
+                                Page {{ photos.number }} de {{ photos.paginator.num_pages }}.
+                            
+                            {% if photos.has_next %}
+                                <a href="?page={{ photos.next_page_number }}">
+                                    Suivante 
+                                </a>
+                                -
+                                <a href="?page={{ photos.paginator.num_pages }}">
+                                    Dernière &raquo;
+                                </a>
+                
+                            {% endif %}        
+                    
+                    </div>
+                    {% endif %}
+                        
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature_post end-->
+
+{% endblock %}
