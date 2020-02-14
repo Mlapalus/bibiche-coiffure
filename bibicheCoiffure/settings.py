@@ -22,13 +22,10 @@ MEDIA_URL = os.path.join(BASE_DIR,'media/')
 EMAIL_BACKEND= 'django.core.mail.backends.console.EmailBackend'
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '62@8w4=%zq4bi@srlrv9_z)^m$(eo#k2%%$)vs2+p&$^-h#ta$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 TEMPLATE_STRING_IF_INVALID = "PasBien"
 
